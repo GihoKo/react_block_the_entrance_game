@@ -1,10 +1,16 @@
 import { PauseButton } from "../../presenter/PauseButton/PauseButton";
 import { usePauseButton } from "./StatusBar.hook";
-import Timer from "../../presenter/Timer/Timer";
-import ResourceDisplay from "../../presenter/ResourceDisplay/ResourceDisplay";
+import { Timer } from "../../presenter/Timer/Timer";
+import { ResourceDisplay } from "../../presenter/ResourceDisplay/ResourceDisplay";
 import * as S from "./StatusBar.style";
+import React from "react";
 
-export default function StatusBar({ mineral, gas }) {
+interface StatusBarProps {
+    mineral: number;
+    gas: number;
+}
+
+export const StatusBar: React.FC<StatusBarProps> = ({ mineral, gas }) => {
     const { isPause, handlePauseClick } = usePauseButton();
 
     return (
@@ -14,4 +20,4 @@ export default function StatusBar({ mineral, gas }) {
             <ResourceDisplay mineral={mineral} gas={gas} />
         </S.Wrapper>
     );
-}
+};

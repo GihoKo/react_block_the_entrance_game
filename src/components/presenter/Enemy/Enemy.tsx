@@ -2,8 +2,13 @@ import * as S from "./Enemy.style";
 import chimpanzeeImg from "../../../assets/img/chimpanzee.png";
 import orangutanImg from "../../../assets/img/orangutan.png";
 import gorillaImg from "../../../assets/img/gorilla.png";
+import React from "react";
 
-export default function Enemy({ type }) {
+interface EnemyProps {
+    type: "chimpanzee" | "orangutan" | "gorilla";
+}
+
+export const Enemy: React.FC<EnemyProps> = ({ type }) => {
     const enemyTypes = {
         chimpanzee: chimpanzeeImg,
         orangutan: orangutanImg,
@@ -15,4 +20,4 @@ export default function Enemy({ type }) {
             <img src={enemyTypes[type]} alt="적 이미지" />
         </S.Wrapper>
     );
-}
+};

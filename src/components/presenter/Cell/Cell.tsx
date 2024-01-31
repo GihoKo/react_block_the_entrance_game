@@ -1,7 +1,12 @@
 import * as S from "./Cell.style";
 import enemySpawnCellBgImg from "../../../assets/img/entrance.png";
+import React from "react";
 
-export default function Cell({ cellType }) {
+interface CellProps {
+    cellType: "enemySpawnCell" | "EnemyPathCell" | "TowerPlacementCell";
+}
+
+export const Cell: React.FC<CellProps> = ({ cellType }) => {
     const cells = {
         enemySpawnCell: {
             backgroundColor: "var(--black-4)",
@@ -14,7 +19,7 @@ export default function Cell({ cellType }) {
     return (
         <S.Wrapper
             backgroundColor={cells[cellType].backgroundColor}
-            backgroundImage={cells[cellType].backgroundImage}
+            backgroundImage={cells[cellType].backgroundImage || ""}
         />
     );
-}
+};

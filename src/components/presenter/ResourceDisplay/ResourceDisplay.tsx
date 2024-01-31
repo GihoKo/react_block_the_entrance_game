@@ -1,8 +1,17 @@
 import * as S from "./ResourceDisplay.style";
 import mineralIcon from "../../../assets/img/mineral.png";
 import gasIcon from "../../../assets/img/gas.png";
+import React from "react";
 
-export default function ResourceDisplay({ mineral, gas }) {
+interface ResourceDisplayProps {
+    mineral: number;
+    gas: number;
+}
+
+export const ResourceDisplay: React.FC<ResourceDisplayProps> = ({
+    mineral,
+    gas,
+}) => {
     return (
         <S.Wrapper>
             <div>
@@ -13,4 +22,4 @@ export default function ResourceDisplay({ mineral, gas }) {
             </div>
         </S.Wrapper>
     );
-}
+};
