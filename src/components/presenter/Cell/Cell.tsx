@@ -1,25 +1,38 @@
 import * as S from "./Cell.style";
-import enemySpawnCellBgImg from "../../../assets/img/entrance.png";
+import enemySpawnCellBgImg from "../../../assets/images/entrance.png";
 import React from "react";
 
 interface CellProps {
-    cellType: "enemySpawnCell" | "EnemyPathCell" | "TowerPlacementCell";
+    cellType: "enemySpawnCell" | "enemyPathCell" | "towerPlacementCell";
+}
+
+interface CellStyle {
+    enemySpawnCell: {
+        backgroundColor: string;
+        backgroundImage: string;
+    };
+    enemyPathCell: {
+        backgroundColor: string;
+    };
+    towerPlacementCell: {
+        backgroundColor: string;
+    };
 }
 
 export const Cell: React.FC<CellProps> = ({ cellType }) => {
-    const cells = {
+    const cells: CellStyle = {
         enemySpawnCell: {
             backgroundColor: "var(--black-4)",
             backgroundImage: `url(${enemySpawnCellBgImg})`,
         },
-        EnemyPathCell: { backgroundColor: "var(--black-4)" },
-        TowerPlacementCell: { backgroundColor: "var(--black-1)" },
+        enemyPathCell: { backgroundColor: "var(--black-4)" },
+        towerPlacementCell: { backgroundColor: "var(--black-1)" },
     };
 
     return (
         <S.Wrapper
             backgroundColor={cells[cellType].backgroundColor}
-            backgroundImage={cells[cellType].backgroundImage || ""}
+            backgroundImage={cells[cellType].backgroundImage}
         />
     );
 };

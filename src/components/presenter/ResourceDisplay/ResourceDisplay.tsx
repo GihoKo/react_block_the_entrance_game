@@ -1,17 +1,14 @@
 import * as S from "./ResourceDisplay.style";
-import mineralIcon from "../../../assets/img/mineral.png";
-import gasIcon from "../../../assets/img/gas.png";
+import mineralIcon from "../../../assets/images/mineral.png";
+import gasIcon from "../../../assets/images/gas.png";
 import React from "react";
+import { useRecoilState } from "recoil";
+import { gasState, mineralState } from "../../../atom";
 
-interface ResourceDisplayProps {
-    mineral: number;
-    gas: number;
-}
+export const ResourceDisplay: React.FC = () => {
+    const [mineral, setMineral] = useRecoilState(mineralState);
+    const [gas, setGas] = useRecoilState(gasState);
 
-export const ResourceDisplay: React.FC<ResourceDisplayProps> = ({
-    mineral,
-    gas,
-}) => {
     return (
         <S.Wrapper>
             <div>
